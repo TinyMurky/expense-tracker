@@ -1,0 +1,18 @@
+.main-container{
+    max-width: 800px;
+}
+.money-display{
+    height: 25vh;
+}
+
+.main-money-container{
+    margin-bottom: 5vh;
+}
+.main-dollar-sign{
+    font-size: 1.5rem;
+    padding-top: 0.35rem;
+}
+
+.main-number{
+    font-size: 3rem;
+}
