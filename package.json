@@ -1,0 +1,19 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "an accounting book allow user to keep track of their money usage ",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TinyMurky/expense-tracker.git"
+  },
+  "author": "TinyMurky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TinyMurky/expense-tracker/issues"
+  },
+  "homepage": "https://github.com/TinyMurky/expense-tracker#readme"
+}
