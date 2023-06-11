@@ -3,7 +3,7 @@ import Counter from './counter.js'
 const CategorySchema = new mongoose.Schema({
   _id: {
     type: Number,
-    require: [true, 'Category need an _id']
+    require: [true, 'Category document need an _id']
   },
   name: {
     type: String,
