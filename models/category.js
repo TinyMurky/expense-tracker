@@ -3,11 +3,11 @@ import Counter from './counter.js'
 const CategorySchema = new mongoose.Schema({
   _id: {
     type: Number,
-    require: [true, 'Category document need an _id']
+    required: [true, '建立新的支出類別需要提供 _id']
   },
   name: {
     type: String,
-    require: [true, 'Category document need a name']
+    required: [true, '建立新的支出類別需要提供 name']
   }
 })
 CategorySchema.pre('save', async function (next) {

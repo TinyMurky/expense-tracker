@@ -3,19 +3,19 @@ import Counter from './counter.js'
 const UserSchema = new mongoose.Schema({
   _id: {
     type: Number,
-    require: [true, 'User document need an _id']
+    required: [true, '建立新的使用者需要提供 _id']
   },
   name: {
     type: String,
-    require: [true, 'User document need a name']
+    required: [true, '建立新的使用者需要提供 name']
   },
   email: {
     type: String,
-    require: [true, 'User document need an email']
+    required: [true, '建立新的使用者需要提供 email']
   },
   password: {
     type: String,
-    require: [true, 'User document need a password']
+    required: [true, '建立新的使用者需要提供 password']
   }
 })
 UserSchema.pre('save', async function (next) {
