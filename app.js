@@ -7,6 +7,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import { router as routes } from './routes/index.js'
 import { helpers } from './plugins/handlebars-helpers.js'
+import './configs/mongoose.js'
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config({ path: '.env' })
 }
