@@ -1,7 +1,7 @@
 .entries-display{
-    height: 47vh; /* 設定容器的固定高度 */
+    height: 56vh; /* 設定容器的固定高度 */
     overflow: hidden; /* 啟用捲軸 */
-    margin-bottom: 10vh;
+    margin-bottom: 4vh;
 }
 .table-wrapper {
 width: 100%;
@@ -17,7 +17,7 @@ display: none;
 }
 thead th {
   position: sticky; /* 設定表頭為固定定位 */
-  top: 0; /* 表頭固定在頂部 */
+  top: 0px; /* 表頭固定在頂部 */
   z-index: 1; /* 設定層級，使表頭在前面 */
 }
 td, th{
