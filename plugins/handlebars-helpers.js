@@ -2,11 +2,11 @@
 export const register = function (Handlebars) {
   const helpers = {
     // put all of your helpers inside this object
-    foo: function () {
-      return 'FOO'
+    checkIsLogin: function () {
+      return false
     },
-    bar: function () {
-      return 'BAR'
+    checkIsRegister: function () {
+      return false
     }
   }
 
