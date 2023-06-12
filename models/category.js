@@ -2,8 +2,8 @@ import mongoose from 'mongoose'
 import Counter from './counter.js'
 const CategorySchema = new mongoose.Schema({
   _id: {
-    type: Number,
-    required: [true, '建立新的支出類別需要提供 _id']
+    type: Number
+    // required: [true, '建立新的支出類別需要提供 _id']
   },
   name: {
     type: String,
