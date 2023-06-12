@@ -2,8 +2,13 @@ import express from 'express'
 import Record from '../../models/record.js'
 export const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.render('index', { stylesheet: 'index.css', script: 'index.js', repeat: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4] })
+router.get('/', async (req, res) => {
+  const entries = await Record.find({ userID: 0 }).sort({ date: -1 }).lean()
+  for (const entry of entries) {
+    entry.date = entry.date.toLocaleDateString('zh-TW')
+  }
+
+  res.render('index', { stylesheet: 'index.css', script: 'index.js', entries })
 })
 
 // 新增支出的頁面
