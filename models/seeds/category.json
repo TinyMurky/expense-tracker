@@ -1,0 +1,27 @@
+[
+    {
+        "_id":1,
+        "name":"家居物業",
+        "icon":"<i class=\"fa-solid fa-house\"></i>"
+    },
+    {   
+        "_id":2,
+        "name":"交通出行",
+        "icon":"<i class=\"fa-solid fa-van-shuttle\"></i>"
+    },
+    {
+        "_id":3,
+        "name":"休閒娛樂",
+        "icon":"<i class=\"fa-solid fa-face-grin-beam\"></i>"
+    },
+    {
+        "_id":4,
+        "name":"餐飲食品",
+        "icon":"<i class=\"fa-solid fa-utensils\"></i>"
+    },
+    {
+        "_id":5,
+        "name":"其他",
+        "icon":"<i class=\"fa-solid fa-pen\"></i>"
+    }
+]

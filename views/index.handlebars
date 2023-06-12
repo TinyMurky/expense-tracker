@@ -6,11 +6,10 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-dollar-to-slot"></i>  全部</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-house"></i> 家居物業</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-van-shuttle"></i> 交通出行</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-face-grin-beam"></i> 休閒娛樂</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-utensils"></i> 餐飲食品</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> 其他</a></li>
+                    <!--主畫面的cayegory下拉menu是從db中的資料決定的-->
+                    {{#each categories}}
+                        <li><a class="dropdown-item" href="#">{{{this.icon}}} {{this.name}}</a></li>
+                    {{/each}}
                 </ul>
             </div>
             <a href="/entries/new" class="new-btn btn btn-outline-primary btn-sm rounded-circle">+</a>
@@ -36,7 +35,7 @@
                 <tbody>
                     {{#each entries}}
                     <tr>
-                        <th scope="row"><i class="fa-solid fa-house"></i></th>
+                        <th scope="row">{{{matchIcon this ../categories}}}</i></th>
                         <td>
                             <div>
                                 <h5 class="m-0 p-0">{{this.name}}</h5>
