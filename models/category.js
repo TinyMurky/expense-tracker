@@ -3,11 +3,14 @@ import Counter from './counter.js'
 const CategorySchema = new mongoose.Schema({
   _id: {
     type: Number
-    // required: [true, '建立新的支出類別需要提供 _id']
   },
   name: {
     type: String,
     required: [true, '建立新的支出類別需要提供 name']
+  },
+  icon: {
+    type: String,
+    required: [true, '支出類別需要有一個font awesome圖示']
   }
 })
 CategorySchema.pre('save', async function (next) {
@@ -21,7 +24,7 @@ CategorySchema.pre('save', async function (next) {
       // upsert: true 如果沒有就建立一個新的counter document
     ).exec()
 
-    doc._id = counter.sequence // 新建的category _id = sequence
+    doc._id = doc._id || counter.sequence // 如果有手動給id||新建的category _id = sequence
     next() // 儲存
   } catch (error) {
     next(error)
