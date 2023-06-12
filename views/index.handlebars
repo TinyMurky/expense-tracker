@@ -34,19 +34,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each repeat}}
+                    {{#each entries}}
                     <tr>
                         <th scope="row"><i class="fa-solid fa-house"></i></th>
                         <td>
                             <div>
-                                <h5 class="m-0 p-0">早餐</h5>
-                                <p class="m-0 p-0 create-time">2023/6/7</p>
+                                <h5 class="m-0 p-0">{{this.name}}</h5>
+                                <p class="m-0 p-0 create-time">{{this.date}}</p>
                             </div>
                         </td>
-                        <td>$<spam class="number">2000</spam></td>
+                        <td>$<spam class="number">{{this.amount}}</spam></td>
                         <td>
-                                <form action="/entries/this._id?_method=DELETE" method="post" class="d-flex flex-row align-items-end justify-content-end flex-wrap ">
-                                    <a href="/entries/this._id/edit" class="btn btn-link btn-sm m-0 p-0 pe-2 link-underline link-underline-opacity-0">edit</a>
+                                <form action="/entries/{{this._id}}?_method=DELETE" method="post" class="d-flex flex-row align-items-end justify-content-end flex-wrap ">
+                                    <a href="/entries/{{this._id}}/edit" class="btn btn-link btn-sm m-0 p-0 pe-2 link-underline link-underline-opacity-0">edit</a>
                                     <button type="submit" class="btn btn-link btn-sm m-0 p-0 link-underline link-underline-opacity-0">delete</button>
                                 </form>
                         </td>

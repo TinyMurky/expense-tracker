@@ -2,8 +2,7 @@ import mongoose from 'mongoose'
 import Counter from './counter.js'
 const RecordSchema = new mongoose.Schema({
   _id: {
-    type: Number,
-    required: [true, '建立新的支出需要建立 _id']
+    type: Number
   },
   name: {
     type: String,
