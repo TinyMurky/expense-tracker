@@ -14,14 +14,12 @@
             <div class="invalid-feedback">日期為必填欄位</div>
         </div>
         <div class="form-group">
-            <label for="category" class="form-label">類別</label>
-            <select class="form-select" id="category" name="category" required>
+            <label for="categoryID" class="form-label">類別</label>
+            <select class="form-select" id="categoryID" name="categoryID" required>
                 <option value="" disabled selected hidden>請選擇支出類別</option>
-                <option value="1">家居物業</option>
-                <option value="2">交通出行</option>
-                <option value="3">休閒娛樂</option>
-                <option value="4">餐飲食品</option>
-                <option value="0">其他</option>
+                {{#each categories}}
+                    <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
             </select>
             <div class="valid-feedback">您做得很棒！</div>
             <div class="invalid-feedback">請選擇支出類別</div>

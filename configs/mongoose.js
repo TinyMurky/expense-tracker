@@ -15,6 +15,7 @@ db.once('open', async () => {
   console.log('Mongodb connected successfully')
 })
 
+// 從category.json中創造預設五個固定id的支出分類
 async function createDefaultCategory () {
   try {
     categoryJSON.forEach(async (item, index) => {
