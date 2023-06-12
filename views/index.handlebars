@@ -5,10 +5,10 @@
                     category
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-dollar-to-slot"></i>  全部</a></li>
+                    <li><a class="dropdown-item" href="/entries"><i class="fa-solid fa-circle-dollar-to-slot"></i>  全部</a></li>
                     <!--主畫面的cayegory下拉menu是從db中的資料決定的-->
                     {{#each categories}}
-                        <li><a class="dropdown-item" href="#">{{{this.icon}}} {{this.name}}</a></li>
+                        <li><a class="dropdown-item" href="/entries/{{this._id}}">{{{this.icon}}} {{this.name}}</a></li>
                     {{/each}}
                 </ul>
             </div>
