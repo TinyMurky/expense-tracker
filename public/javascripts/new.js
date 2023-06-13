@@ -14,3 +14,5 @@ submitBtn.addEventListener('click', (event) => {
 const dateInput = document.querySelector('#date')
 const today = new Date()
 dateInput.max = today.toISOString().split('T')[0]
+// input預設是今天
+dateInput.value = today.toISOString().split('T')[0]

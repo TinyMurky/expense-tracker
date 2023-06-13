@@ -52,11 +52,11 @@ router.get('/:categoryID?', async (req, res) => {
       entry.date = entry.date.toLocaleDateString('zh-TW')
       totalSpend += entry.amount
     }
-    res.render('index', { stylesheet: 'index.css', script: 'index.js', entries, totalSpend, categories, indexErrors })
+    res.render('index', { stylesheet: 'index.css', script: 'index.js', entries, totalSpend, categories, categoryID, indexErrors })
   } catch (error) {
     console.error(error)
     req.flash('index_page_error', error.errors)
-    res.redirect('/entries')
+    // res.redirect('/entries')
   }
 })
 

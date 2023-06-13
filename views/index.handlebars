@@ -15,7 +15,7 @@
         <a href="/entries/new" class="new-btn btn btn-outline-primary btn-sm rounded-circle">+</a>
     </div>
     <div class="container money-display d-flex flex-column justify-content-center align-items-center">
-        <h6 class="text-body-secondary">總消費</h2>
+        <h6 class="text-body-secondary">{{#if categoryID}}{{matchCategoryName categoryID categories}}{{else}}總消費{{/if}}</h2>
         <div class="main-money-container d-flex">
             <h5 class="text-body-secondary main-dollar-sign">$</h3>
             <h1 class="number main-number py-0">{{totalSpend}}</h1>
@@ -26,18 +26,10 @@
     <!---------------------->
     <div class="container entries-display">
         <div class="table-wrapper table-responsive">
-            <table class="table table-hover table-sm align-middle">
-                <thead>
-                    <tr>
-                    <th scope="col"></th>
-                    <th scope="col" class="text-body-secondary">Today:</th>
-                    <th scope="col" class="text-body-secondary">$<spam class="number">2000</spam></th>
-                    <th scope="col" class="text-body-secondary"></th>
-                    </tr>
-                </thead>
+            <table class="entries-table table table-hover table-sm align-middle">
                 <tbody>
                     {{#each entries}}
-                    <tr>
+                    <tr class="entry">
                         <th scope="row">{{{matchIcon this ../categories}}}</i></th>
                         <td>
                             <div>
