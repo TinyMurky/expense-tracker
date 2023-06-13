@@ -21,6 +21,11 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+app.use(session({
+  secret: process.env.SECRET_SESSION_WORD,
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(flash())
 app.use(routes)
 app.listen(PORT, () => {
