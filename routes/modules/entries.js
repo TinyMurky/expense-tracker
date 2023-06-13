@@ -6,18 +6,6 @@ export const router = express.Router()
 // 所有的categories去出
 const categories = await getCategory()
 
-// 主要頁面
-router.get('/', async (req, res) => {
-  const entries = await Record.find({ userID: 0 }).sort({ date: -1, _id: -1 }).lean()
-  let totalSpend = 0
-  for (const entry of entries) {
-    entry.date = entry.date.toLocaleDateString('zh-TW')
-    totalSpend += entry.amount
-  }
-
-  res.render('index', { stylesheet: 'index.css', script: 'index.js', entries, totalSpend, categories })
-})
-
 // 新增支出的頁面
 router.get('/new', (req, res) => {
   res.render('new', { stylesheet: 'new.css', script: 'new.js', categories })
@@ -37,6 +25,23 @@ router.post('/', async (req, res) => {
   })
   await entry.save()
   res.redirect('/entries')
+})
+
+// 主要頁面 categoryID非必要，若無則全部顯示
+router.get('/:categoryID?', async (req, res) => {
+  const categoryID = req.params.categoryID
+  const query = { userID: 0 }
+  if (categoryID) { // 如果沒有提供categoryID就不用該條件搜尋，以呈現所有records
+    query.categoryID = categoryID
+  }
+  const entries = await Record.find(query).sort({ date: -1, _id: -1 }).lean()
+  let totalSpend = 0
+  for (const entry of entries) {
+    entry.date = entry.date.toLocaleDateString('zh-TW')
+    totalSpend += entry.amount
+  }
+
+  res.render('index', { stylesheet: 'index.css', script: 'index.js', entries, totalSpend, categories })
 })
 
 // 刪除頁面
