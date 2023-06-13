@@ -10,7 +10,16 @@ const RecordSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    required: [true, '未輸入正確的支出日期']
+    required: [true, '未輸入正確的支出日期'],
+    validate: {
+      validator: function (v) {
+        return (
+          v && // 檢查date是不是存在
+              v.getTime() <= Date.now() + 24 * 60 * 60 * 1000
+        )
+      },
+      message: '支出日期最多只能到今天'
+    }
   },
   amount: {
     type: Number,
