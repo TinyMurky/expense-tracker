@@ -16,9 +16,12 @@ scrollbar-color: lightgray gray; /* 自訂捲軸顏色 */
 display: none;
 }
 thead th {
-  position: sticky; /* 設定表頭為固定定位 */
+  /*position: sticky; /* 設定表頭為固定定位 */
   top: 0px; /* 表頭固定在頂部 */
   z-index: 1; /* 設定層級，使表頭在前面 */
+}
+.date-sum th{
+    padding-top: 2.5rem;
 }
 td, th{
     text-align: center;

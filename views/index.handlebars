@@ -26,18 +26,10 @@
     <!---------------------->
     <div class="container entries-display">
         <div class="table-wrapper table-responsive">
-            <table class="table table-hover table-sm align-middle">
-                <thead>
-                    <tr>
-                    <th scope="col"></th>
-                    <th scope="col" class="text-body-secondary">Today:</th>
-                    <th scope="col" class="text-body-secondary">$<spam class="number">2000</spam></th>
-                    <th scope="col" class="text-body-secondary"></th>
-                    </tr>
-                </thead>
+            <table class="entries-table table table-hover table-sm align-middle">
                 <tbody>
                     {{#each entries}}
-                    <tr>
+                    <tr class="entry">
                         <th scope="row">{{{matchIcon this ../categories}}}</i></th>
                         <td>
                             <div>
