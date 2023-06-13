@@ -15,7 +15,7 @@
         <a href="/entries/new" class="new-btn btn btn-outline-primary btn-sm rounded-circle">+</a>
     </div>
     <div class="container money-display d-flex flex-column justify-content-center align-items-center">
-        <h6 class="text-body-secondary">總消費</h2>
+        <h6 class="text-body-secondary">{{#if categoryID}}{{matchCategoryName categoryID categories}}{{else}}總消費{{/if}}</h2>
         <div class="main-money-container d-flex">
             <h5 class="text-body-secondary main-dollar-sign">$</h3>
             <h1 class="number main-number py-0">{{totalSpend}}</h1>
