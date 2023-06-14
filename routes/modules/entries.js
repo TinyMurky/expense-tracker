@@ -1,6 +1,7 @@
 import express from 'express'
 import Record from '../../models/record.js'
 import { getCategory } from '../../plugins/toolbox.js'
+import record from '../../models/record.js'
 export const router = express.Router()
 
 // 所有的categories去出
@@ -14,6 +15,7 @@ router.get('/:recordID/edit', async (req, res) => {
   // 取出record
   const recordID = parseInt(req.params.recordID, 10)
   const record = await Record.findOne({ _id: recordID, userID: user._id }).lean()
+  record.date = record.date.toISOString().split('T')[0]
   // 和new頁面共用css與js
   res.render('edit', { stylesheet: 'new.css', script: 'new.js', categories, editErrors, user, record })
 })
