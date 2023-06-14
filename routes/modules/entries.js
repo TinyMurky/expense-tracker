@@ -5,7 +5,35 @@ export const router = express.Router()
 
 // 所有的categories去出
 const categories = await getCategory()
+// 修改支出的頁面
+router.get('/:recordID/edit', async (req, res) => {
+  // 在put的時候出現錯誤從此取出
+  const editErrors = req.flash('edit_errors')[0]
+  const user = req.user
 
+  // 取出record
+  const recordID = parseInt(req.params.recordID, 10)
+  const record = await Record.findOne({ _id: recordID, userID: user._id }).lean()
+  // 和new頁面共用css與js
+  res.render('edit', { stylesheet: 'new.css', script: 'new.js', categories, editErrors, user, record })
+})
+// 修改支出
+router.put('/:recordID', async (req, res) => {
+  const recordID = parseInt(req.params.recordID, 10)
+  try {
+    const user = req.user
+    const update = req.body
+    await Record.findOneAndUpdate({ _id: recordID, userID: user._id }, update, {
+      runValidators: true
+    })
+    res.redirect('/entries')
+  } catch (error) {
+    console.error(error)
+    // 如果出現任何錯誤就放入flash後導回/new_頁面
+    req.flash('edit_errors', error.errors)
+    res.redirect(`/entries/${recordID}/edit`)
+  }
+})
 // 新增支出的頁面
 router.get('/new', (req, res) => {
   // 在post的時候出現錯誤從此取出
