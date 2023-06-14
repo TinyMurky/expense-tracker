@@ -22,6 +22,18 @@ const entriesBody = document.querySelector('.entries-table').querySelector('tbod
 const today = new Date()
 const yesterday = new Date(Date.now() - 86400000)
 
+// 如果沒有任何一筆entry，增加空的表頭
+if (!allEntries.length) {
+  const newNode = `
+                  <tr class="date-sum">
+                    <th scope="col"></th>
+                    <th scope="col" class="text-body-secondary">Today:</th>
+                    <th scope="col" class="text-body-secondary">$<spam class="number">0</spam></th>
+                    <th scope="col" class="text-body-secondary"></th>
+                  </tr>
+                    `
+  entriesBody.innerHTML = newNode
+}
 allEntries.forEach(entry => {
   // 畫面中的每一個entries，用entries的日期去尋找map中當天金額的總和
   let entryDate = entry.querySelector('.create-time').textContent
