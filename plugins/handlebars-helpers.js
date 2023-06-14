@@ -30,5 +30,8 @@ export const helpers = {
     } else {
       return null
     }
+  },
+  selectedInEdit: function (categoryID, recordID) {
+    return categoryID === recordID
   }
 }

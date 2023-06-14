@@ -7,6 +7,14 @@
     {{/each}}
 {{/if}}
 
+{{#if editErrors}}
+    {{#each editErrors}}
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>{{this.message}}</strong>
+    </div>
+    {{/each}}
+{{/if}}
 
 {{#if indexErrors}}
     {{#each indexErrors}}
