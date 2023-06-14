@@ -30,6 +30,7 @@ app.use(session({
 app.use(flash())
 usePassport(app)
 app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.login_error = req.flash('login_error')
   res.locals.register_errors = req.flash('register_errors')
   res.locals.logout_success = req.flash('logout_success')

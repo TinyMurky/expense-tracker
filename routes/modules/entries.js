@@ -10,12 +10,13 @@ const categories = await getCategory()
 router.get('/new', (req, res) => {
   // 在post的時候出現錯誤從此取出
   const newErrors = req.flash('new_errors')[0]
-
-  res.render('new', { stylesheet: 'new.css', script: 'new.js', categories, newErrors })
+  const user = req.user
+  res.render('new', { stylesheet: 'new.css', script: 'new.js', categories, newErrors, user })
 })
 // 創建新的支出
 router.post('/', async (req, res) => {
   try {
+    const user = req.user
     let { name, date, categoryID, amount } = req.body
     date = new Date(date)
     amount = parseInt(amount, 10)
@@ -23,7 +24,7 @@ router.post('/', async (req, res) => {
       name,
       date,
       amount,
-      userID: 0,
+      userID: user._id,
       categoryID
     })
     await entry.save()
@@ -40,19 +41,25 @@ router.post('/', async (req, res) => {
 router.get('/:categoryID?', async (req, res) => {
   try {
     // 如果主畫面 與 delete出現error都會放入indexError並從此取出
+    const user = req.user
     const indexErrors = req.flash('index_page_error')
     const categoryID = req.params.categoryID
-    const query = { userID: 0 }
-    if (categoryID) { // 如果沒有提供categoryID就不用該條件搜尋，以呈現所有records
+    const query = { userID: user._id }
+
+    if (categoryID) {
+      // 如果沒有提供categoryID就不用該條件搜尋，以呈現所有records
       query.categoryID = categoryID
     }
+
     const entries = await Record.find(query).sort({ date: -1, _id: -1 }).lean()
+
+    // 計算總支出，同時幫每筆entry標上日期
     let totalSpend = 0
     for (const entry of entries) {
       entry.date = entry.date.toLocaleDateString('zh-TW')
       totalSpend += entry.amount
     }
-    res.render('index', { stylesheet: 'index.css', script: 'index.js', entries, totalSpend, categories, categoryID, indexErrors })
+    res.render('index', { stylesheet: 'index.css', script: 'index.js', entries, totalSpend, categories, categoryID, indexErrors, user })
   } catch (error) {
     console.error(error)
     req.flash('index_page_error', error.errors)
@@ -63,8 +70,9 @@ router.get('/:categoryID?', async (req, res) => {
 // 刪除頁面
 router.delete('/:id', async (req, res) => {
   try {
+    const user = req.user
     const _id = parseInt(req.params.id, 10)
-    await Record.deleteOne({ _id, userID: 0 })
+    await Record.deleteOne({ _id, userID: user._id })
     res.redirect('/entries')
   } catch (error) {
     console.error(error)
