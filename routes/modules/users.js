@@ -1,4 +1,5 @@
 import express from 'express'
+import passport from 'passport'
 export const router = express.Router()
 
 router.get('/login', (req, res) => {
@@ -6,6 +7,10 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
+  passport.authenticate('local', { failureRedirect: '/login' },
+    function (req, res) {
+      res.redirect('/')
+    })
 })
 
 router.get('/register', (req, res) => {
