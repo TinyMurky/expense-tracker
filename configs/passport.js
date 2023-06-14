@@ -9,7 +9,6 @@ const localStrategy = new LocalStrategy(
     passReqToCallback: true // 要打開這個才能回傳flash
   },
   async function verify (req, email, password, done) {
-    console.log('I am in verify')
     try {
       if (!email || !password) {
         const message = '信箱或密碼未填寫'
