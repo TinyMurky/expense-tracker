@@ -9,6 +9,7 @@ const localStrategy = new LocalStrategy(
     passReqToCallback: true // 要打開這個才能回傳flash
   },
   async function verify (req, email, password, done) {
+    console.log('I am in verify')
     try {
       if (!email || !password) {
         const message = '信箱或密碼未填寫'
@@ -31,7 +32,8 @@ const localStrategy = new LocalStrategy(
       }
       return done(null, user)
     } catch (error) {
-      done(error, false)
+      req.flash('login_error', error.message)
+      return done(error, false)
     }
   }
 )
@@ -46,7 +48,7 @@ export function usePassport (app) {
 
   passport.deserializeUser(async function (id, done) {
     try {
-      const user = await User.findById(id)
+      const user = await User.findById(id).lean()
       return done(null, user)
     } catch (error) {
       return done(error, false)
