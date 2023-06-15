@@ -24,7 +24,6 @@ export const helpers = {
     const category = categories.find((item) => {
       return item._id === categoryID
     })
-    console.log('match: ', category)
     if (category) {
       return category.name
     } else {

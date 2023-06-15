@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node --no-warnings app.js",
     "dev": "nodemon app.js",
+    "seed": "node --no-warnings ./models/seeds/seeder.js",
     "test": "jest"
   },
   "repository": {
