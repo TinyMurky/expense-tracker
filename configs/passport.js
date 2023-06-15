@@ -1,6 +1,7 @@
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
 import GitHubStrategy from 'passport-github2'
+import GoogleStrategy from 'passport-google-oauth20'
 import User from '../models/user.js'
 import bcrypt from 'bcryptjs'
 import dotenv from 'dotenv'
@@ -42,7 +43,36 @@ const localStrategy = new LocalStrategy(
     }
   }
 )
+const googleStrategy = new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK
+},
+async function (accessToken, refreshToken, profile, done) {
+  try {
+    const name = profile._json.name
+    const email = profile._json.email
 
+    const user = await User.findOne({ email })
+    if (user) {
+      return done(null, user)
+    } else {
+      const password = nanoid()
+      const salt = await bcrypt.genSalt(10)
+      const hash = await bcrypt.hash(password, salt)
+      const newUser = new User({
+        name,
+        email,
+        password: hash
+      })
+      await newUser.save()
+      return done(null, newUser)
+    }
+  } catch (error) {
+    return done(error, false)
+  }
+}
+)
 const gitHubStrategy = new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -79,6 +109,7 @@ export function usePassport (app) {
   app.use(passport.session())
   passport.use(localStrategy)
   passport.use(gitHubStrategy)
+  passport.use(googleStrategy)
   passport.serializeUser(function (user, done) {
     return done(null, user.id)
   })
