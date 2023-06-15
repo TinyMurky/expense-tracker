@@ -1,7 +1,6 @@
 import express from 'express'
 import Record from '../../models/record.js'
 import { getCategory } from '../../plugins/toolbox.js'
-import record from '../../models/record.js'
 export const router = express.Router()
 
 // 所有的categories去出
