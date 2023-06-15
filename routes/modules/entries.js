@@ -80,7 +80,7 @@ router.get('/:categoryID?', async (req, res) => {
       query.categoryID = categoryID
     }
 
-    const entries = await Record.find(query).sort({ date: -1, _id: -1 }).lean()
+    const entries = await Record.find(query).sort({ date: -1, _id: 1 }).lean()
 
     // 計算總支出，同時幫每筆entry標上日期
     let totalSpend = 0

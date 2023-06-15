@@ -14,10 +14,7 @@ db.once('open', async () => {
   await createDefaultCategory()
   console.log('Mongodb connected successfully')
 })
-// 在程式結束前關閉 Mongoose 連線, 不然在程式關閉後會佔據port
-process.on('beforeExit', () => {
-  mongoose.disconnect()
-})
+
 // 從category.json中創造預設五個固定id的支出分類
 async function createDefaultCategory () {
   try {
