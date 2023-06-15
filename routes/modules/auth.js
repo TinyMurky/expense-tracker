@@ -11,3 +11,18 @@ router.get('/github/callback',
     // Successful authentication, redirect home.
     res.redirect('/entries')
   })
+
+router.get('/google',
+  passport.authenticate('google', {
+    scope: [
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email'
+    ]
+  })) // 'email',
+
+router.get('/google/callback',
+  passport.authenticate('google', { failureRedirect: '/users/login', failureMessage: true }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/entries')
+  })
