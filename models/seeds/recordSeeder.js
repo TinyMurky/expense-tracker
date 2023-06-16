@@ -13,7 +13,6 @@ const seedUser = [{
 
 db.once('open', async () => {
   console.log('開始建立預設帳號，請耐心等待')
-  setTimeout(() => {}, 2000)
   const categories = await Category.find().lean()
   for (let i = 0; i < seedUser.length; i++) {
     // 看看seed user是否已建立，如果未建立才執行
@@ -36,7 +35,7 @@ db.once('open', async () => {
       for (let date = 0; date < 7; date++) {
         for (let item = 1; item <= 3; item++) {
           const recordName = `${category.name}-test-${date * 3 + item}`
-          const recordAmount = date * 100 + item * 100
+          const recordAmount = date * 1000 + item * 100
           const recordDate = new Date(Date.now() - 86400000 * date).setHours(0, 0, 0, 0) // record建立在midnight
           // 如果record出現過得就不要再建立了
           const record = await Record.findOne({ userID: user._id, categoryID: category._id, name: recordName })
