@@ -15,25 +15,25 @@
 
 ## Features - 產品功能
 使用者可以：
-    - 註冊帳號
-        - 註冊之後，可以登入/登出
-        - 可使用Google與Github帳號註冊/登入
-        - 只有登入狀態的使用者可以看到 app 內容，否則一律被導向登入頁
+- 註冊帳號
+    - 註冊之後，可以登入/登出
+    - 可使用Google與Github帳號註冊/登入
+    - 只有登入狀態的使用者可以看到 app 內容，否則一律被導向登入頁
 
-    - 在首頁一次瀏覽所有支出的清單
-        - 使用者只能看到自己建立的資料
+- 在首頁一次瀏覽所有支出的清單
+    - 使用者只能看到自己建立的資料
 
-    - 在首頁看到所有支出清單的總金額
+- 在首頁看到所有支出清單的總金額
 
-    - 可以看到各天花費支出總和
+- 可以看到各天花費支出總和
 
-    - 根據「類別」篩選支出；總金額與各天支出總和的計算只會包括被篩選出來的金額
+- 根據「類別」篩選支出；總金額與各天支出總和的計算只會包括被篩選出來的金額
 
-    - 新增一筆支出
+- 新增一筆支出
 
-    - 編輯支出的屬性
+- 編輯支出的屬性
 
-    - 刪除任何一筆支出
+- 刪除任何一筆支出
 
 
 ## Installing - 專案安裝流程
@@ -64,8 +64,8 @@
     ![](./README/Github_developer.png)
 
     - GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET請於 [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project)申請一組OAuth 2.0用戶端ID與金鑰，設定時`已授權的重新導向URI`請填寫`http://localhost:3000/auth/google/callback`
-
     ![](./README/Google_developer.png)
+
     - 於第5點建立Cluster後，請把.env中`MONGODB_URL`以下的`<>`內的資訊替代成您的資訊（`<>`不需要留）
         ```
         mongodb+srv://<您的帳號名稱>:<password>@<您的Cluster連結>/restaurants?retryWrites=true&w=majority
@@ -81,10 +81,12 @@
     ||Name|Email|Password|
     |:--|:--|:--|:--|
     |1|root|root@example.com|12345678|
+
 8. 建立完畢後，繼續於終端機輸入：
     ```
     npm run start
     ```
+
 9. 若看見此行訊息則代表順利運行，打開瀏覽器進入到以下網址:
     ```
     Mongodb connected successfully
@@ -167,18 +169,18 @@
 ### 登出
 ![](./README/logout.gif)
 ## Dependencies - 使用套件
-    - bcryptjs: 2.4.3
-    - connect-flash: 0.1.1
-    - dotenv: 16.1.4
-    - express: 4.18.2
-    - express-handlebars: 7.0.7
-    - express-session: 1.17.3
-    - method-override: 3.0.0
-    - nanoid: 4.0.2
-    - passport: 0.6.0
-    - passport-github2: 0.1.12
-    - passport-google-oauth20: 2.0.0
-    - passport-local: 1.0.0
+- bcryptjs: 2.4.3
+- connect-flash: 0.1.1
+- dotenv: 16.1.4
+- express: 4.18.2
+- express-handlebars: 7.0.7
+- express-session: 1.17.3
+- method-override: 3.0.0
+- nanoid: 4.0.2
+- passport: 0.6.0
+- passport-github2: 0.1.12
+- passport-google-oauth20: 2.0.0
+- passport-local: 1.0.0
 
 ## Creator - 作者
-    - Tiny_Murky
+- Tiny_Murky
