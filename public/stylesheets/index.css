@@ -1,5 +1,5 @@
 .entries-display{
-    height: 56vh; /* 設定容器的固定高度 */
+    height: 42vh; /* 設定容器的固定高度 */
     overflow: hidden; /* 啟用捲軸 */
     margin-bottom: 4vh;
 }
@@ -38,7 +38,10 @@ th:nth-child(4), td:nth-child(4){
     text-align:end;
     width:auto;
 }
-
+.ugly-new{
+    min-width:50%;
+    margin: 1vh auto 6vh;
+}
 .new-btn{
     height: 27px;
     width: 27px;
