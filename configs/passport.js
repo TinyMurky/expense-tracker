@@ -17,12 +17,6 @@ const localStrategy = new LocalStrategy(
   },
   async function verify (req, email, password, done) {
     try {
-      if (!email || !password) {
-        const message = '信箱或密碼未填寫'
-        req.flash('login_error', message)
-        return done(null, false, { message })
-      }
-
       const user = await User.findOne({ email })
       if (!user) {
         const message = '您提供的信箱尚未註冊'

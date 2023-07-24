@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs'
 import express from 'express'
 import passport from 'passport'
 import User from '../../models/user.js'
+import { checkEmailPassword } from '../../middlewares/authorization.js'
 export const router = express.Router()
 
 router.get('/login', (req, res) => {
@@ -13,6 +14,7 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login',
+  checkEmailPassword, // passport有bug，它沒辦法檢查空的email和password，要自己另外寫middleware
   passport.authenticate('local',
     {
       failureRedirect: '/users/login',
