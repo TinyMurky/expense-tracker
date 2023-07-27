@@ -11,6 +11,11 @@
 - [Dependencies - 使用套件](#dependencies---使用套件)
 - [Creator - 作者](#creator---作者)
 ## Demo - 專案畫面
+- Medium部落格介紹: [點我](https://medium.com/@tinymurky/%E5%B0%88%E6%A1%88-%E8%A8%98%E5%B8%B3%E7%B6%B2%E7%AB%99-%E6%88%91%E7%9A%84%E7%A7%81%E6%88%BF%E9%8C%A2-5ec064eab541)
+- AWS部屬(使用以下帳號密碼體驗): [點我](http://ec2-35-78-73-49.ap-northeast-1.compute.amazonaws.com/users/login)
+  - Email : root@example.com
+  - Password: 12345678
+
 ![](./README/DEMO.png)
 
 ## Features - 產品功能
